@@ -3,15 +3,17 @@ const navList = document.querySelector('.navbar ul');
 const navLinks = document.querySelectorAll('.navbar a');
 const hamburger = document.querySelector('.navbar__toggler');
 
-hamburgerClick(() => {
-    hamburger.classList.toggle('open__hamburger');
-    navList.classList.toggle('open');
-})
+hamburger.addEventListener("click", navbarTogglerClick);
 
-navLinks.forEach(e => e.addEventListener('click', linkClick));
+function navbarTogglerClick() {
+    hamburger.classList.toggle("open-navbar__toggler");
+    navList.classList.toggle("open");
+}
 
-linkClick(() => {
-    if (navList.classList.contains('open')) {
+navLinks.forEach(elem => elem.addEventListener("click", navbarLinkClick));
+
+function navbarLinkClick() {
+    if (navList.classList.contains("open")) {
         hamburger.click();
     }
-})
+}
